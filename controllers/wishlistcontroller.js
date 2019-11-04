@@ -32,7 +32,9 @@ router.post('/', (req, res) => {
 
 
 router.get('/:motorName', (req, res) => {
-    Wishlist.findAll({ where: { motorName: req.params.motorName}})
+    Wishlist.findAll({ where:  {
+        motorName: req.params.motorName,
+        owner: req.user.id}})
     .then(wishlist => res.status(200).json(wishlist))
     .catch(err => res.status(500).json({ error: err}))
 })
