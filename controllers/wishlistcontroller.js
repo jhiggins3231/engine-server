@@ -2,7 +2,7 @@ const router = require('express').Router();
 const Wishlist = require('../db').import('../models/wishlist');
 
 router.get('/', (req, res) => {
-    Wishlist.findAll({
+    Wishlist.findOne({
         where: {
             owner: req.user.id
         }
